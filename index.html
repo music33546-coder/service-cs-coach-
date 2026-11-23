@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="#183d69" name="theme-color"/><title>현장 CS 코치 | 상황별 고객응대 가이드</title><style>
+:root{font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic",system-ui,sans-serif;color:#17273d;background:#f4f7fb;font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input{font:inherit}button{cursor:pointer}button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid #80b9ef;outline-offset:3px}.shell{max-width:950px;margin:auto;padding:42px 18px 64px}.eyebrow{font-size:12px;letter-spacing:.16em;color:#3772ab;font-weight:800;margin-bottom:14px}.headline{display:flex;justify-content:space-between;gap:14px;align-items:center}.headline h1{font-size:clamp(26px,4.2vw,42px);margin:0;letter-spacing:-.045em}.label{background:#e7f0fb;color:#376b9c;padding:8px 12px;border-radius:100px;font-size:12px;white-space:nowrap;font-weight:700}.intro{font-size:15px;line-height:1.75;color:#62758c;margin:16px 0 26px}.main{background:white;border:1px solid #dce5ef;border-radius:22px;padding:24px;box-shadow:0 14px 32px rgba(25,46,70,.05)}.search{position:relative}.search input{border:1px solid #d8e1ea;background:#f8fafc;border-radius:14px;width:100%;padding:16px 18px 16px 43px;color:#1e324d;font-size:15px;outline:none}.search input:focus{border-color:#448ac8;background:white}.searchicon{position:absolute;left:16px;top:16px;color:#6e8195}.catlabel{font-size:13px;color:#697f98;margin:23px 0 11px;font-weight:750}.categories{display:flex;flex-wrap:wrap;gap:8px}.category{border-radius:100px;background:#f3f6fa;border:1px solid #e2e8f0;color:#526982;padding:11px 15px;font-size:13px;font-weight:700}.category.active{background:#183d69;border-color:#183d69;color:white}.sectionheader{display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid #e8edf2;padding:26px 2px 16px;margin-bottom:9px}.sectionheader h2{font-size:21px;letter-spacing:-.035em;margin:0}.count{color:#77869a;font-size:12px;white-space:nowrap}.faq{border-bottom:1px solid #e8edf2}.faq[hidden]{display:none}.faq summary{display:flex;align-items:center;gap:12px;list-style:none;cursor:pointer;padding:18px 4px}.faq summary::-webkit-details-marker{display:none}.qid{color:#3e79b8;font-weight:800;font-size:13px;flex-shrink:0}.qtitle{flex:1;font-weight:700;font-size:15px;line-height:1.5;word-break:keep-all}.chevron{width:9px;height:9px;border-right:2px solid #718096;border-bottom:2px solid #718096;transform:rotate(45deg);transition:transform .15s;flex-shrink:0;margin-right:5px}.faq[open] .chevron{transform:rotate(225deg)}.faq[open] summary{color:#173f72}.answer{background:#fcfcfd;border:1px solid #e1e5ea;border-radius:15px;padding:17px;margin:0 0 16px}.answer-head{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#1d2d42;font-size:14px}.chip{font-size:11px;color:#1c8b51;background:#e5f8ec;border-radius:50px;padding:4px 8px}.switch{display:flex;margin:14px 0 17px;border-radius:100px;background:#f1f2f4;padding:3px;gap:3px}.mode{width:50%;border:none;background:transparent;border-radius:100px;padding:10px 5px;color:#7c8490;font-size:13px}.mode.active{background:#fff;box-shadow:0 1px 5px #c5cbd555;color:#22344b;font-weight:800}.response-title{font-size:12px;font-weight:750;color:#234466;margin-bottom:10px}.response{font-size:14px;line-height:1.85;letter-spacing:-.012em;color:#192b3e;white-space:pre-wrap;word-break:keep-all;margin:0;min-height:64px}.copyrow{display:flex;justify-content:flex-end;margin-top:15px}.copy{border:1px solid #d5dce5;background:white;color:#536477;border-radius:100px;padding:8px 14px;font-size:12px}.copy:hover{background:#eff5fb}.empty{padding:30px;text-align:center;color:#77869a}.actions{display:flex;justify-content:flex-end;gap:12px;margin-top:15px}.textbtn{border:0;background:transparent;color:#506985;font-weight:700;font-size:12px;padding:7px}.disclaimer{color:#8191a4;font-size:12px;line-height:1.8;margin:23px 3px 0}.footer{color:#8191a4;font-size:12px;margin-top:12px}.noscriptnote{color:#b87521;font-size:12px}@media(max-width:580px){.shell{padding:25px 12px 40px}.main{padding:15px 13px;border-radius:19px}.headline{align-items:flex-start}.headline h1{font-size:27px}.eyebrow{font-size:10px}.intro{font-size:13px}.label{padding:6px 8px;font-size:10px;margin-top:3px}.category{padding:10px 12px;font-size:12px}.sectionheader h2{font-size:19px}.qtitle{font-size:14px}.faq summary{gap:9px;padding:17px 2px}.answer{padding:13px}.response{font-size:13px}.mode{font-size:12px}.search input{font-size:14px}}
+
+/* CSS-only response selection: works even when JavaScript is unavailable */
+.mode-radio{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.switch .mode{display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none}
+.mode-radio:focus-visible ~ .switch{outline:2px solid #367cc3;outline-offset:3px}
+.mode-radio[value="formal"]:checked ~ .switch label[for^="formal-"],
+.mode-radio[value="natural"]:checked ~ .switch label[for^="natural-"]{background:#fff;box-shadow:0 1px 5px #c5cbd555;color:#22344b;font-weight:800}
+.formal-panel{display:none}
+.natural-panel{display:block}
+.mode-radio[value="formal"]:checked ~ .formal-panel{display:block}
+.mode-radio[value="formal"]:checked ~ .natural-panel{display:none}
+
+/* Component guidance for the 6th category */
+.coaching{border-top:1px solid #e5e9ef;margin-top:18px;padding-top:15px;color:#314a67}
+.coaching-title{font-size:12px;font-weight:800;letter-spacing:.01em;margin-bottom:8px}
+.coaching p{font-size:13px;line-height:1.7;margin:0;word-break:keep-all}
+@media(max-width:580px){.coaching p{font-size:12px}.switch .mode{font-size:12px}}
+</style></head>
+<body><main class="shell"><div class="eyebrow">FIELD SERVICE · CS QUICK GUIDE</div><div class="headline"><h1>상황별 고객응대 가이드</h1><span class="label">교육용 시제품</span></div>
+<p class="intro">현장에서 마주하는 고객 질문, 상황에 맞는 표현을 빠르게 찾아보세요.<br/>질문을 펼친 뒤 <b>두 가지 응대 방식</b>을 비교할 수 있습니다.</p>
+<div class="main"><div class="search"><span aria-hidden="true" class="searchicon">⌕</span><input aria-label="질문 및 응대 멘트 검색" id="search" placeholder="예: 타이어, 에어컨, 배터리" type="search"/></div>
+<div class="catlabel">상황별 카테고리</div><nav aria-label="상황별 카테고리" class="categories"><button aria-pressed="true" class="category active" data-cat="0" type="button">₩  수리비 · 견적</button><button aria-pressed="false" class="category" data-cat="1" type="button">⚙  점검 · 진단</button><button aria-pressed="false" class="category" data-cat="2" type="button">◷  대기 · 일정</button><button aria-pressed="false" class="category" data-cat="3" type="button">↻  수리 후 · 재방문</button><button aria-pressed="false" class="category" data-cat="4" type="button">☏  불만 · 감정 응대</button><button aria-pressed="false" class="category" data-cat="5" type="button">⚒  부품 관리 · 차량 수리</button></nav>
+<div class="sectionheader"><h2 id="sectiontitle">01. 수리비 · 견적</h2><span class="count" id="count">4개 질문</span></div>
+<section id="faqs"><details class="faq" data-cat="0" data-search="수리비 · 견적 수리비가 왜 이렇게 비싸요? 생각했던 금액보다 훨씬 많이 나왔는데요? 고객님, 수리비가 예상보다 높아 부담스러우실 수 있습니다. 이번 견적에는 부품 비용과 교체 작업에 필요한 공임이 포함되어 있는데요. 비용이 많이 발생하는 항목을 중심으로 수리 필요성과 금액을 자세히 설명드리겠습니다. 생각하셨던 것보다 금액이 좀 높으시죠. 이번에는 부품값도 있지만 교체 작업에 들어가는 비용도 포함돼 있습니다. 여기 보시면 이 부분이 비용이 가장 큰 항목인데요. 왜 이 작업이 필요한지부터 설명드릴게요.">
+<summary><span class="qid">Q01</span><span class="qtitle">수리비가 왜 이렇게 비싸요? 생각했던 금액보다 훨씬 많이 나왔는데요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-1" name="mode-1" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-1" name="mode-1" type="radio" value="natural"/><div aria-label="Q1 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-1">정석형 응대</label><label class="mode" for="natural-1">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">고객님, 수리비가 예상보다 높아 부담스러우실 수 있습니다. 이번 견적에는 부품 비용과 교체 작업에 필요한 공임이 포함되어 있는데요. 비용이 많이 발생하는 항목을 중심으로 수리 필요성과 금액을 자세히 설명드리겠습니다.</p><p class="response natural-panel">생각하셨던 것보다 금액이 좀 높으시죠. 이번에는 부품값도 있지만 교체 작업에 들어가는 비용도 포함돼 있습니다. 여기 보시면 이 부분이 비용이 가장 큰 항목인데요. 왜 이 작업이 필요한지부터 설명드릴게요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="0" data-search="수리비 · 견적 다른 정비소에서는 더 저렴하다고 했는데, 여기는 왜 이렇게 비싸요? 고객님, 정비소마다 부품의 종류나 작업 범위, 공임 기준에 따라 견적 차이가 발생할 수 있습니다. 정확한 비교를 위해 저희 견적에 포함된 부품과 작업 내용을 안내드리겠습니다. 다른 곳에서 받으신 견적보다 높게 나왔군요. 같은 수리라도 부품이나 작업 범위가 조금씩 다를 수 있거든요. 혹시 다른 견적서가 있으시면 어떤 부분에서 차이가 나는지 같이 비교해 드릴게요.">
+<summary><span class="qid">Q02</span><span class="qtitle">다른 정비소에서는 더 저렴하다고 했는데, 여기는 왜 이렇게 비싸요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-2" name="mode-2" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-2" name="mode-2" type="radio" value="natural"/><div aria-label="Q2 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-2">정석형 응대</label><label class="mode" for="natural-2">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">고객님, 정비소마다 부품의 종류나 작업 범위, 공임 기준에 따라 견적 차이가 발생할 수 있습니다. 정확한 비교를 위해 저희 견적에 포함된 부품과 작업 내용을 안내드리겠습니다.</p><p class="response natural-panel">다른 곳에서 받으신 견적보다 높게 나왔군요. 같은 수리라도 부품이나 작업 범위가 조금씩 다를 수 있거든요. 혹시 다른 견적서가 있으시면 어떤 부분에서 차이가 나는지 같이 비교해 드릴게요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="0" data-search="수리비 · 견적 처음에는 이 금액이라고 하셨잖아요. 그런데 왜 비용이 더 나와요? 고객님, 최초 견적과 달리 추가 비용이 발생할 수 있는 부분이 확인되어 안내드립니다. 점검 과정에서 ○○ 부분의 이상이 추가로 확인됐으며, 해당 작업에는 ○○원의 비용이 예상됩니다. 작업 필요성과 비용을 설명드린 후 고객님의 동의를 받아 진행하겠습니다. 고객님, 점검하다 보니 처음에는 확인되지 않았던 문제가 하나 더 발견됐습니다. 이 부분까지 작업하면 ○○원이 추가되는데요. 바로 진행하지 않고 먼저 말씀드리려고 연락드렸습니다. 어떤 문제인지 설명드릴게요.">
+<summary><span class="qid">Q03</span><span class="qtitle">처음에는 이 금액이라고 하셨잖아요. 그런데 왜 비용이 더 나와요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-3" name="mode-3" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-3" name="mode-3" type="radio" value="natural"/><div aria-label="Q3 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-3">정석형 응대</label><label class="mode" for="natural-3">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">고객님, 최초 견적과 달리 추가 비용이 발생할 수 있는 부분이 확인되어 안내드립니다. 점검 과정에서 ○○ 부분의 이상이 추가로 확인됐으며, 해당 작업에는 ○○원의 비용이 예상됩니다. 작업 필요성과 비용을 설명드린 후 고객님의 동의를 받아 진행하겠습니다.</p><p class="response natural-panel">고객님, 점검하다 보니 처음에는 확인되지 않았던 문제가 하나 더 발견됐습니다. 이 부분까지 작업하면 ○○원이 추가되는데요. 바로 진행하지 않고 먼저 말씀드리려고 연락드렸습니다. 어떤 문제인지 설명드릴게요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="0" data-search="수리비 · 견적 견적서를 봐도 뭐가 뭔지 모르겠어요. 이 비용은 다 뭐예요? 고객님, 견적서의 항목별 내용을 쉽게 설명드리겠습니다. 부품 비용과 작업 공임을 구분해서 안내드리고, 각 작업이 필요한 이유도 함께 말씀드리겠습니다. 부품 이름이 낯설어서 보시기 어려우실 거예요. 여기 적힌 건 부품 가격이고, 이쪽은 교체하는 데 들어가는 작업 비용입니다. 금액이 큰 항목부터 하나씩 설명드릴게요.">
+<summary><span class="qid">Q04</span><span class="qtitle">견적서를 봐도 뭐가 뭔지 모르겠어요. 이 비용은 다 뭐예요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-4" name="mode-4" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-4" name="mode-4" type="radio" value="natural"/><div aria-label="Q4 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-4">정석형 응대</label><label class="mode" for="natural-4">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">고객님, 견적서의 항목별 내용을 쉽게 설명드리겠습니다. 부품 비용과 작업 공임을 구분해서 안내드리고, 각 작업이 필요한 이유도 함께 말씀드리겠습니다.</p><p class="response natural-panel">부품 이름이 낯설어서 보시기 어려우실 거예요. 여기 적힌 건 부품 가격이고, 이쪽은 교체하는 데 들어가는 작업 비용입니다. 금액이 큰 항목부터 하나씩 설명드릴게요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="1" data-search="점검 · 진단 인터넷에서는 다른 문제라고 하던데요? 왜 여기서는 진단이 다르게 나와요? 고객님께서 확인하신 정보도 참고할 수 있습니다. 다만 동일한 증상이라도 차량 상태에 따라 원인이 다를 수 있기 때문에 실제 점검 결과를 기준으로 판단해야 합니다. 이번 차량에서 확인된 이상 항목과 진단 근거를 설명드리겠습니다. 인터넷에는 그렇게 나와 있었군요. 그런데 같은 증상이어도 원인은 다를 수 있어요. 예를 들어 시동이 잘 안 걸리는 것도 배터리만의 문제는 아니거든요. 이번 차량은 점검해 보니 ○○ 부분에 문제가 확인됐습니다.">
+<summary><span class="qid">Q05</span><span class="qtitle">인터넷에서는 다른 문제라고 하던데요? 왜 여기서는 진단이 다르게 나와요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-5" name="mode-5" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-5" name="mode-5" type="radio" value="natural"/><div aria-label="Q5 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-5">정석형 응대</label><label class="mode" for="natural-5">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">고객님께서 확인하신 정보도 참고할 수 있습니다. 다만 동일한 증상이라도 차량 상태에 따라 원인이 다를 수 있기 때문에 실제 점검 결과를 기준으로 판단해야 합니다. 이번 차량에서 확인된 이상 항목과 진단 근거를 설명드리겠습니다.</p><p class="response natural-panel">인터넷에는 그렇게 나와 있었군요. 그런데 같은 증상이어도 원인은 다를 수 있어요. 예를 들어 시동이 잘 안 걸리는 것도 배터리만의 문제는 아니거든요. 이번 차량은 점검해 보니 ○○ 부분에 문제가 확인됐습니다.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="1" data-search="점검 · 진단 이 부품을 꼭 교체해야 해요? 아직 쓸 수 있는 거 아니에요? 고객님, 부품 교체 여부는 현재의 마모 상태와 제조사 정비 기준 등을 종합적으로 고려하여 판단합니다. 해당 부품의 상태와 교체를 권장드리는 이유를 설명드리고, 가능한 정비 방법도 함께 안내드리겠습니다. 아직 쓸 수 있는 부품인데 바꾸는 건 아닌지 궁금하신 거죠. 지금은 이 부분이 이렇게 마모된 상태입니다. 이 정도면 왜 교체를 권장하는지, 조금 더 사용해도 되는 상태인지 기준을 보여드리면서 설명드릴게요.">
+<summary><span class="qid">Q06</span><span class="qtitle">이 부품을 꼭 교체해야 해요? 아직 쓸 수 있는 거 아니에요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-6" name="mode-6" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-6" name="mode-6" type="radio" value="natural"/><div aria-label="Q6 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-6">정석형 응대</label><label class="mode" for="natural-6">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">고객님, 부품 교체 여부는 현재의 마모 상태와 제조사 정비 기준 등을 종합적으로 고려하여 판단합니다. 해당 부품의 상태와 교체를 권장드리는 이유를 설명드리고, 가능한 정비 방법도 함께 안내드리겠습니다.</p><p class="response natural-panel">아직 쓸 수 있는 부품인데 바꾸는 건 아닌지 궁금하신 거죠. 지금은 이 부분이 이렇게 마모된 상태입니다. 이 정도면 왜 교체를 권장하는지, 조금 더 사용해도 되는 상태인지 기준을 보여드리면서 설명드릴게요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="1" data-search="점검 · 진단 다른 정비소에서는 이상 없다고 했는데, 여기는 왜 수리하래요? 고객님, 다른 곳에서 안내받으신 내용과 달라 혼란스러우실 수 있습니다. 점검 시점이나 확인한 항목에 따라 결과가 다를 수 있는데요. 이번 점검에서 어떤 이상이 확인됐고, 왜 수리가 필요하다고 판단했는지 근거를 보여드리며 설명드리겠습니다. 다른 곳에서는 괜찮다고 했는데 여기서는 수리해야 한다니까 의아하실 수 있죠. 점검할 때 확인한 부분이나 차량 상태에 따라 결과가 다를 수 있거든요. 저희가 어떤 문제를 확인했는지 보여드리면서 설명드릴게요.">
+<summary><span class="qid">Q07</span><span class="qtitle">다른 정비소에서는 이상 없다고 했는데, 여기는 왜 수리하래요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-7" name="mode-7" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-7" name="mode-7" type="radio" value="natural"/><div aria-label="Q7 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-7">정석형 응대</label><label class="mode" for="natural-7">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">고객님, 다른 곳에서 안내받으신 내용과 달라 혼란스러우실 수 있습니다. 점검 시점이나 확인한 항목에 따라 결과가 다를 수 있는데요. 이번 점검에서 어떤 이상이 확인됐고, 왜 수리가 필요하다고 판단했는지 근거를 보여드리며 설명드리겠습니다.</p><p class="response natural-panel">다른 곳에서는 괜찮다고 했는데 여기서는 수리해야 한다니까 의아하실 수 있죠. 점검할 때 확인한 부분이나 차량 상태에 따라 결과가 다를 수 있거든요. 저희가 어떤 문제를 확인했는지 보여드리면서 설명드릴게요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="1" data-search="점검 · 진단 스캐너에 오류가 떴다고 하는데, 그게 무슨 뜻이에요? 고객님, 차량 진단기에 오류 코드가 확인됐다는 의미입니다. 차량의 전자제어장치가 특정 부분에서 이상 신호를 감지하고 기록한 것인데요. 오류 코드만으로 고장 원인이 확정되는 것은 아니기 때문에 관련 부품과 작동 상태를 추가로 확인한 뒤 정확히 안내드리겠습니다. 쉽게 말씀드리면 차가 이상하다고 느낀 부분을 기록해 둔 거예요. 스캐너로 그 기록을 확인한 거고요. 다만 오류가 떴다고 무조건 그 부품이 고장 났다는 뜻은 아닙니다. 어느 부분에 문제가 있는지 조금 더 확인해 봐야 해요.">
+<summary><span class="qid">Q08</span><span class="qtitle">스캐너에 오류가 떴다고 하는데, 그게 무슨 뜻이에요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-8" name="mode-8" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-8" name="mode-8" type="radio" value="natural"/><div aria-label="Q8 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-8">정석형 응대</label><label class="mode" for="natural-8">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">고객님, 차량 진단기에 오류 코드가 확인됐다는 의미입니다. 차량의 전자제어장치가 특정 부분에서 이상 신호를 감지하고 기록한 것인데요. 오류 코드만으로 고장 원인이 확정되는 것은 아니기 때문에 관련 부품과 작동 상태를 추가로 확인한 뒤 정확히 안내드리겠습니다.</p><p class="response natural-panel">쉽게 말씀드리면 차가 이상하다고 느낀 부분을 기록해 둔 거예요. 스캐너로 그 기록을 확인한 거고요. 다만 오류가 떴다고 무조건 그 부품이 고장 났다는 뜻은 아닙니다. 어느 부분에 문제가 있는지 조금 더 확인해 봐야 해요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="2" data-search="대기 · 일정 아까는 금방 끝난다고 하셨잖아요. 왜 이렇게 오래 걸려요? 고객님, 당초 안내드린 시간보다 작업이 지연되어 죄송합니다. 현재 ○○ 작업까지 진행됐으며, 남은 작업과 확인 절차를 고려하면 ○시경 완료될 것으로 예상됩니다. 일정에 변동이 발생할 경우 미리 연락드리겠습니다. 고객님, 죄송합니다. 작업이 생각보다 조금 더 걸리고 있습니다. 지금 ○○까지 진행됐고, 마무리 점검까지 하면 ○시 정도에 끝날 것 같습니다. 혹시 더 늦어지면 제가 먼저 연락드릴게요.">
+<summary><span class="qid">Q09</span><span class="qtitle">아까는 금방 끝난다고 하셨잖아요. 왜 이렇게 오래 걸려요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-9" name="mode-9" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-9" name="mode-9" type="radio" value="natural"/><div aria-label="Q9 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-9">정석형 응대</label><label class="mode" for="natural-9">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">고객님, 당초 안내드린 시간보다 작업이 지연되어 죄송합니다. 현재 ○○ 작업까지 진행됐으며, 남은 작업과 확인 절차를 고려하면 ○시경 완료될 것으로 예상됩니다. 일정에 변동이 발생할 경우 미리 연락드리겠습니다.</p><p class="response natural-panel">고객님, 죄송합니다. 작업이 생각보다 조금 더 걸리고 있습니다. 지금 ○○까지 진행됐고, 마무리 점검까지 하면 ○시 정도에 끝날 것 같습니다. 혹시 더 늦어지면 제가 먼저 연락드릴게요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="2" data-search="대기 · 일정 그래서 제 차 언제 나와요? 정확히 몇 시에 끝나는 거예요? 고객님, 현재 작업이 진행 중이어서 정확한 완료 시점을 확정하기는 어렵습니다. 다만 ○시경 진행 상황을 다시 확인할 수 있을 것으로 예상됩니다. 확인되는 대로 제가 먼저 연락드리겠습니다. 아직 정확히 몇 시에 끝난다고 말씀드리기는 어렵습니다. ○시쯤이면 남은 시간을 좀 더 알 수 있을 것 같아요. 그때 제가 먼저 전화드릴 테니 계속 확인하시지 않으셔도 됩니다.">
+<summary><span class="qid">Q10</span><span class="qtitle">그래서 제 차 언제 나와요? 정확히 몇 시에 끝나는 거예요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-10" name="mode-10" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-10" name="mode-10" type="radio" value="natural"/><div aria-label="Q10 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-10">정석형 응대</label><label class="mode" for="natural-10">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">고객님, 현재 작업이 진행 중이어서 정확한 완료 시점을 확정하기는 어렵습니다. 다만 ○시경 진행 상황을 다시 확인할 수 있을 것으로 예상됩니다. 확인되는 대로 제가 먼저 연락드리겠습니다.</p><p class="response natural-panel">아직 정확히 몇 시에 끝난다고 말씀드리기는 어렵습니다. ○시쯤이면 남은 시간을 좀 더 알 수 있을 것 같아요. 그때 제가 먼저 전화드릴 테니 계속 확인하시지 않으셔도 됩니다.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="2" data-search="대기 · 일정 예약하고 시간 맞춰 왔는데, 왜 이렇게 기다려야 해요? 고객님, 예약 시간에 맞춰 방문해 주셨는데 점검이 지연되어 죄송합니다. 앞선 차량의 작업이 예상보다 길어져 현재 대기가 발생하고 있습니다. 예상 대기 시간은 ○분이며, 진행 상황에 변동이 있을 경우 안내드리겠습니다. 예약하고 시간 맞춰 오셨는데 기다리시게 해서 죄송합니다. 앞 차량 작업이 조금 늦어지고 있어서요. 지금은 ○분 정도 더 기다리셔야 할 것 같습니다. 시간이 달라지면 바로 말씀드릴게요.">
+<summary><span class="qid">Q11</span><span class="qtitle">예약하고 시간 맞춰 왔는데, 왜 이렇게 기다려야 해요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-11" name="mode-11" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-11" name="mode-11" type="radio" value="natural"/><div aria-label="Q11 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-11">정석형 응대</label><label class="mode" for="natural-11">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">고객님, 예약 시간에 맞춰 방문해 주셨는데 점검이 지연되어 죄송합니다. 앞선 차량의 작업이 예상보다 길어져 현재 대기가 발생하고 있습니다. 예상 대기 시간은 ○분이며, 진행 상황에 변동이 있을 경우 안내드리겠습니다.</p><p class="response natural-panel">예약하고 시간 맞춰 오셨는데 기다리시게 해서 죄송합니다. 앞 차량 작업이 조금 늦어지고 있어서요. 지금은 ○분 정도 더 기다리셔야 할 것 같습니다. 시간이 달라지면 바로 말씀드릴게요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="3" data-search="수리 후 · 재방문 분명히 수리했는데 왜 똑같은 증상이 또 나타나는 거예요? 고객님, 수리 후 동일한 증상이 발생해 불편을 겪으신 점 죄송합니다. 우선 이전 정비 내역을 확인하고, 현재 나타나는 증상을 다시 점검하겠습니다. 이전 작업과 관련이 있는지도 함께 확인한 후 결과를 안내드리겠습니다. 수리받으셨는데 또 같은 증상이 나타났군요. 번거롭게 다시 오시게 됐네요. 우선 지난번에 어떤 작업을 했는지 확인하고, 이번에도 같은 원인인지 다시 살펴보겠습니다.">
+<summary><span class="qid">Q12</span><span class="qtitle">분명히 수리했는데 왜 똑같은 증상이 또 나타나는 거예요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-12" name="mode-12" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-12" name="mode-12" type="radio" value="natural"/><div aria-label="Q12 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-12">정석형 응대</label><label class="mode" for="natural-12">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">고객님, 수리 후 동일한 증상이 발생해 불편을 겪으신 점 죄송합니다. 우선 이전 정비 내역을 확인하고, 현재 나타나는 증상을 다시 점검하겠습니다. 이전 작업과 관련이 있는지도 함께 확인한 후 결과를 안내드리겠습니다.</p><p class="response natural-panel">수리받으셨는데 또 같은 증상이 나타났군요. 번거롭게 다시 오시게 됐네요. 우선 지난번에 어떤 작업을 했는지 확인하고, 이번에도 같은 원인인지 다시 살펴보겠습니다.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="3" data-search="수리 후 · 재방문 그래서 오늘 정확히 뭘 수리한 거예요? 다시 설명해 주세요. 네, 고객님. 오늘 차량에서 확인된 문제와 진행한 정비 내용을 다시 안내드리겠습니다. ○○ 부분의 이상이 확인되어 해당 작업을 진행했고, 작업 후 관련 항목의 정상 작동 여부를 확인했습니다. 향후 주의하실 사항도 함께 말씀드리겠습니다. 네, 다시 설명드릴게요. 처음에는 ○○ 증상 때문에 오셨고, 점검해 보니 이 부분에 문제가 있었습니다. 그래서 오늘 이 부품을 교체했고요. 작업 후에는 정상적으로 작동하는지도 확인했습니다.">
+<summary><span class="qid">Q13</span><span class="qtitle">그래서 오늘 정확히 뭘 수리한 거예요? 다시 설명해 주세요.</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-13" name="mode-13" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-13" name="mode-13" type="radio" value="natural"/><div aria-label="Q13 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-13">정석형 응대</label><label class="mode" for="natural-13">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">네, 고객님. 오늘 차량에서 확인된 문제와 진행한 정비 내용을 다시 안내드리겠습니다. ○○ 부분의 이상이 확인되어 해당 작업을 진행했고, 작업 후 관련 항목의 정상 작동 여부를 확인했습니다. 향후 주의하실 사항도 함께 말씀드리겠습니다.</p><p class="response natural-panel">네, 다시 설명드릴게요. 처음에는 ○○ 증상 때문에 오셨고, 점검해 보니 이 부분에 문제가 있었습니다. 그래서 오늘 이 부품을 교체했고요. 작업 후에는 정상적으로 작동하는지도 확인했습니다.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="3" data-search="수리 후 · 재방문 이제 정말 괜찮은 거 맞죠? 또 같은 문제가 생기는 건 아니겠죠? 고객님, 오늘 정비한 부분은 작업 후 점검을 완료했으며 현재 관련 이상은 확인되지 않았습니다. 다만 운행 중 동일하거나 유사한 증상이 발생할 경우 추가 점검이 필요할 수 있으니, 해당 증상이 나타나면 다시 방문해 주시기 바랍니다. 오늘 수리한 부분은 작업 후에 다시 확인했고, 지금은 이상이 없는 상태입니다. 혹시 운행하시다가 전에 느끼셨던 증상이 다시 나타나면 연락 주세요. 그때 어떤 상황에서 증상이 생겼는지 알려주시면 점검하는 데 도움이 됩니다.">
+<summary><span class="qid">Q14</span><span class="qtitle">이제 정말 괜찮은 거 맞죠? 또 같은 문제가 생기는 건 아니겠죠?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-14" name="mode-14" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-14" name="mode-14" type="radio" value="natural"/><div aria-label="Q14 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-14">정석형 응대</label><label class="mode" for="natural-14">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">고객님, 오늘 정비한 부분은 작업 후 점검을 완료했으며 현재 관련 이상은 확인되지 않았습니다. 다만 운행 중 동일하거나 유사한 증상이 발생할 경우 추가 점검이 필요할 수 있으니, 해당 증상이 나타나면 다시 방문해 주시기 바랍니다.</p><p class="response natural-panel">오늘 수리한 부분은 작업 후에 다시 확인했고, 지금은 이상이 없는 상태입니다. 혹시 운행하시다가 전에 느끼셨던 증상이 다시 나타나면 연락 주세요. 그때 어떤 상황에서 증상이 생겼는지 알려주시면 점검하는 데 도움이 됩니다.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="4" data-search="불만 · 감정 응대 차 고치러 왔다가 기분만 상하네요. 여기 서비스가 왜 이래요? 고객님, 서비스를 이용하시는 과정에서 불편을 느끼셨다니 죄송합니다. 어떤 부분에서 불편을 겪으셨는지 말씀해 주시면 상황을 정확히 확인하고, 가능한 조치 방법을 안내드리겠습니다. 고객님, 불편하게 해드려 죄송합니다. 어떤 부분이 가장 불편하셨는지 말씀해 주시겠어요? 제가 먼저 확인해 보고 어떻게 도와드릴 수 있을지 안내드릴게요.">
+<summary><span class="qid">Q15</span><span class="qtitle">차 고치러 왔다가 기분만 상하네요. 여기 서비스가 왜 이래요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-15" name="mode-15" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-15" name="mode-15" type="radio" value="natural"/><div aria-label="Q15 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-15">정석형 응대</label><label class="mode" for="natural-15">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">고객님, 서비스를 이용하시는 과정에서 불편을 느끼셨다니 죄송합니다. 어떤 부분에서 불편을 겪으셨는지 말씀해 주시면 상황을 정확히 확인하고, 가능한 조치 방법을 안내드리겠습니다.</p><p class="response natural-panel">고객님, 불편하게 해드려 죄송합니다. 어떤 부분이 가장 불편하셨는지 말씀해 주시겠어요? 제가 먼저 확인해 보고 어떻게 도와드릴 수 있을지 안내드릴게요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="4" data-search="불만 · 감정 응대 책임자 누구예요? 담당자 말고 책임자분이랑 얘기할게요. 네, 고객님. 담당 책임자에게 상황을 전달하고 연결을 요청하겠습니다. 지금까지 말씀하신 내용과 요청 사항을 함께 전달하여 원활하게 상담이 이어질 수 있도록 하겠습니다. 네, 알겠습니다. 책임자분께 바로 말씀드려 볼게요. 고객님께서 말씀하신 내용도 같이 전달하겠습니다. 잠시만 기다려 주세요.">
+<summary><span class="qid">Q16</span><span class="qtitle">책임자 누구예요? 담당자 말고 책임자분이랑 얘기할게요.</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-16" name="mode-16" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-16" name="mode-16" type="radio" value="natural"/><div aria-label="Q16 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-16">정석형 응대</label><label class="mode" for="natural-16">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">네, 고객님. 담당 책임자에게 상황을 전달하고 연결을 요청하겠습니다. 지금까지 말씀하신 내용과 요청 사항을 함께 전달하여 원활하게 상담이 이어질 수 있도록 하겠습니다.</p><p class="response natural-panel">네, 알겠습니다. 책임자분께 바로 말씀드려 볼게요. 고객님께서 말씀하신 내용도 같이 전달하겠습니다. 잠시만 기다려 주세요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="4" data-search="불만 · 감정 응대 제가 언제 그렇게 말했다고 했어요? 제 말을 잘못 알아들으신 것 같은데요? 고객님, 제가 말씀하신 내용을 정확히 이해하지 못한 것 같습니다. 죄송합니다. ○○ 상황에서 해당 증상이 나타난다는 말씀이 맞으실까요? 확인한 내용을 기준으로 다시 점검하겠습니다. 아, 제가 그 부분을 잘못 이해했네요. 죄송합니다. 그러니까 ○○할 때 이런 증상이 생긴다는 말씀이시죠? 그 부분을 기준으로 다시 확인해 볼게요.">
+<summary><span class="qid">Q17</span><span class="qtitle">제가 언제 그렇게 말했다고 했어요? 제 말을 잘못 알아들으신 것 같은데요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-17" name="mode-17" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-17" name="mode-17" type="radio" value="natural"/><div aria-label="Q17 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-17">정석형 응대</label><label class="mode" for="natural-17">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">고객님, 제가 말씀하신 내용을 정확히 이해하지 못한 것 같습니다. 죄송합니다. ○○ 상황에서 해당 증상이 나타난다는 말씀이 맞으실까요? 확인한 내용을 기준으로 다시 점검하겠습니다.</p><p class="response natural-panel">아, 제가 그 부분을 잘못 이해했네요. 죄송합니다. 그러니까 ○○할 때 이런 증상이 생긴다는 말씀이시죠? 그 부분을 기준으로 다시 확인해 볼게요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="4" data-search="불만 · 감정 응대 아니, 그게 아니라니까요! 제 말 제대로 듣고 계세요? 고객님, 제가 말씀하신 내용을 정확하게 이해하지 못한 것 같습니다. 죄송합니다. 다시 한번 말씀해 주시면 중간에 끊지 않고 듣고, 제가 이해한 내용이 맞는지 확인하겠습니다. 아, 제가 말씀하신 부분을 잘못 이해했네요. 죄송합니다. 다시 한번 말씀해 주시겠어요? 이번에는 끝까지 듣고 정확히 확인해 볼게요.">
+<summary><span class="qid">Q18</span><span class="qtitle">아니, 그게 아니라니까요! 제 말 제대로 듣고 계세요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">개편 예시</span></div>
+<input aria-label="정석형 응대" class="mode-radio" id="formal-18" name="mode-18" type="radio" value="formal"/><input aria-label="자연형 응대" checked="" class="mode-radio" id="natural-18" name="mode-18" type="radio" value="natural"/><div aria-label="Q18 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-18">정석형 응대</label><label class="mode" for="natural-18">자연형 응대</label></div>
+<div class="response-title">▤ 현장에서 바로 쓰는 응대 멘트</div>
+<p class="response formal-panel">고객님, 제가 말씀하신 내용을 정확하게 이해하지 못한 것 같습니다. 죄송합니다. 다시 한번 말씀해 주시면 중간에 끊지 않고 듣고, 제가 이해한 내용이 맞는지 확인하겠습니다.</p><p class="response natural-panel">아, 제가 말씀하신 부분을 잘못 이해했네요. 죄송합니다. 다시 한번 말씀해 주시겠어요? 이번에는 끝까지 듣고 정확히 확인해 볼게요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+</div></details><details class="faq" data-cat="5" data-search="부품 관리 · 차량 수리 브레이크 패드가 닳았다고 하는데, 그냥 좀 더 타면 안 돼요? 브레이크 패드는 제동할 때 마찰로 조금씩 마모되는 소모품입니다. 마모가 심해지면 제동 성능에 영향을 줄 수 있고, 브레이크 디스크까지 손상될 수 있습니다. 교체 여부는 현재 패드의 잔여 두께와 마모 상태를 기준으로 판단하는데요. 고객님 차량은 ○○ 상태로 확인되어 교체를 권장드립니다. 브레이크 패드는 쉽게 말해 바퀴가 돌 때 마찰을 일으켜 차를 멈추게 돕는 부품이에요. 지우개처럼 사용하면서 조금씩 닳는다고 생각하시면 됩니다. 너무 많이 닳으면 잘 멈추는 데 영향을 줄 수 있어서요. 지금 얼마나 남았는지 보여드리고, 왜 교체가 필요한 상태인지 설명드릴게요. 안전과 직결된 부품은 막연한 불안감보다 실제 마모 상태와 교체 기준을 설명하기">
+<summary><span class="qid">Q19</span><span class="qtitle">브레이크 패드가 닳았다고 하는데, 그냥 좀 더 타면 안 돼요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">Q19 · 브레이크 패드</span></div>
+<input aria-label="전문·논리형 응대" class="mode-radio" id="formal-19" name="mode-19" type="radio" value="formal"/>
+<input aria-label="쉬운 설명형 응대" checked="" class="mode-radio" id="natural-19" name="mode-19" type="radio" value="natural"/>
+<div aria-label="Q19 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-19">전문·논리형</label><label class="mode" for="natural-19">쉬운 설명형</label></div>
+<div class="response-title">▤ 고객의 눈높이에서 쉽게 설명하는 응대</div>
+<p class="response formal-panel">브레이크 패드는 제동할 때 마찰로 조금씩 마모되는 소모품입니다. 마모가 심해지면 제동 성능에 영향을 줄 수 있고, 브레이크 디스크까지 손상될 수 있습니다. 교체 여부는 현재 패드의 잔여 두께와 마모 상태를 기준으로 판단하는데요. 고객님 차량은 ○○ 상태로 확인되어 교체를 권장드립니다.</p><p class="response natural-panel">브레이크 패드는 쉽게 말해 바퀴가 돌 때 마찰을 일으켜 차를 멈추게 돕는 부품이에요. 지우개처럼 사용하면서 조금씩 닳는다고 생각하시면 됩니다. 너무 많이 닳으면 잘 멈추는 데 영향을 줄 수 있어서요. 지금 얼마나 남았는지 보여드리고, 왜 교체가 필요한 상태인지 설명드릴게요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+<div class="coaching"><div class="coaching-title">♧   CS 코칭 포인트</div><p>안전과 직결된 부품은 막연한 불안감보다 실제 마모 상태와 교체 기준을 설명하기</p></div>
+</div></details><details class="faq" data-cat="5" data-search="부품 관리 · 차량 수리 엔진오일 교체한 지 얼마 안 됐는데, 벌써 또 갈아야 하나요? 엔진오일은 엔진 내부의 마찰을 줄이고 열과 불순물 관리에도 중요한 역할을 합니다. 교체 시기는 주행거리뿐 아니라 교체 후 경과 기간과 운행 환경을 함께 고려해야 하는데요. 특히 짧은 거리 반복 주행이나 잦은 정차 등 운행 조건에 따라 교체 주기가 달라질 수 있습니다. 고객님 차량의 교체 이력과 권장 주기를 비교해서 설명드리겠습니다. 엔진오일은 엔진이 부드럽게 움직이도록 도와주는 윤활유예요. 많이 달리지 않았더라도 시간이 지나거나 운행 조건에 따라 관리가 필요할 수 있거든요. 특히 짧은 거리를 자주 운행하는 경우에는 일반적인 주행과 관리 기준이 달라질 수 있어요. 지난번 교체 날짜와 주행거리를 같이 확인해 볼게요. 무조건 교체를 권하기보다 차량별 주기와 운행 습관을 연결해 필요성을 설명하기">
+<summary><span class="qid">Q20</span><span class="qtitle">엔진오일 교체한 지 얼마 안 됐는데, 벌써 또 갈아야 하나요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">Q20 · 엔진오일</span></div>
+<input aria-label="전문·논리형 응대" class="mode-radio" id="formal-20" name="mode-20" type="radio" value="formal"/>
+<input aria-label="쉬운 설명형 응대" checked="" class="mode-radio" id="natural-20" name="mode-20" type="radio" value="natural"/>
+<div aria-label="Q20 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-20">전문·논리형</label><label class="mode" for="natural-20">쉬운 설명형</label></div>
+<div class="response-title">▤ 고객의 눈높이에서 쉽게 설명하는 응대</div>
+<p class="response formal-panel">엔진오일은 엔진 내부의 마찰을 줄이고 열과 불순물 관리에도 중요한 역할을 합니다. 교체 시기는 주행거리뿐 아니라 교체 후 경과 기간과 운행 환경을 함께 고려해야 하는데요. 특히 짧은 거리 반복 주행이나 잦은 정차 등 운행 조건에 따라 교체 주기가 달라질 수 있습니다. 고객님 차량의 교체 이력과 권장 주기를 비교해서 설명드리겠습니다.</p><p class="response natural-panel">엔진오일은 엔진이 부드럽게 움직이도록 도와주는 윤활유예요. 많이 달리지 않았더라도 시간이 지나거나 운행 조건에 따라 관리가 필요할 수 있거든요. 특히 짧은 거리를 자주 운행하는 경우에는 일반적인 주행과 관리 기준이 달라질 수 있어요. 지난번 교체 날짜와 주행거리를 같이 확인해 볼게요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+<div class="coaching"><div class="coaching-title">♧   CS 코칭 포인트</div><p>무조건 교체를 권하기보다 차량별 주기와 운행 습관을 연결해 필요성을 설명하기</p></div>
+</div></details><details class="faq" data-cat="5" data-search="부품 관리 · 차량 수리 배터리가 방전돼서 충전했는데, 굳이 새것으로 교체해야 하나요? 배터리 방전과 배터리 성능 저하는 구분해서 판단해야 합니다. 충전으로 시동이 다시 걸리더라도 배터리의 충전 상태와 실제 성능이 충분한지는 별개입니다. 배터리 상태를 점검하고 필요하면 충전 계통도 확인해서, 단순 방전인지 배터리 성능이 저하된 것인지 판단한 뒤 교체 필요성을 안내드리겠습니다. 휴대폰도 충전하면 다시 켜지지만, 오래 사용하면 배터리가 빨리 닳기도 하잖아요. 자동차 배터리도 비슷해요. 한 번 방전됐다고 무조건 교체해야 하는 건 아니지만, 충전해도 제 성능을 유지하지 못한다면 교체가 필요할 수 있습니다. 지금 배터리 상태가 어떤지 검사 결과를 확인해 드릴게요. 휴대폰 배터리 비유로 이해를 돕되, 단순 방전과 성능 저하를 명확히 구분하기">
+<summary><span class="qid">Q21</span><span class="qtitle">배터리가 방전돼서 충전했는데, 굳이 새것으로 교체해야 하나요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">Q21 · 배터리</span></div>
+<input aria-label="전문·논리형 응대" class="mode-radio" id="formal-21" name="mode-21" type="radio" value="formal"/>
+<input aria-label="쉬운 설명형 응대" checked="" class="mode-radio" id="natural-21" name="mode-21" type="radio" value="natural"/>
+<div aria-label="Q21 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-21">전문·논리형</label><label class="mode" for="natural-21">쉬운 설명형</label></div>
+<div class="response-title">▤ 고객의 눈높이에서 쉽게 설명하는 응대</div>
+<p class="response formal-panel">배터리 방전과 배터리 성능 저하는 구분해서 판단해야 합니다. 충전으로 시동이 다시 걸리더라도 배터리의 충전 상태와 실제 성능이 충분한지는 별개입니다. 배터리 상태를 점검하고 필요하면 충전 계통도 확인해서, 단순 방전인지 배터리 성능이 저하된 것인지 판단한 뒤 교체 필요성을 안내드리겠습니다.</p><p class="response natural-panel">휴대폰도 충전하면 다시 켜지지만, 오래 사용하면 배터리가 빨리 닳기도 하잖아요. 자동차 배터리도 비슷해요. 한 번 방전됐다고 무조건 교체해야 하는 건 아니지만, 충전해도 제 성능을 유지하지 못한다면 교체가 필요할 수 있습니다. 지금 배터리 상태가 어떤지 검사 결과를 확인해 드릴게요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+<div class="coaching"><div class="coaching-title">♧   CS 코칭 포인트</div><p>휴대폰 배터리 비유로 이해를 돕되, 단순 방전과 성능 저하를 명확히 구분하기</p></div>
+</div></details><details class="faq" data-cat="5" data-search="부품 관리 · 차량 수리 엔진 경고등이 들어왔는데 차는 멀쩡해요. 그냥 타도 되죠? 엔진 경고등은 엔진이나 관련 제어 시스템에서 이상이 감지됐을 때 표시될 수 있습니다. 현재 주행에 큰 문제가 느껴지지 않더라도 이상이 없다고 판단할 수는 없습니다. 경고등이 점등된 상태인지 점멸하는지, 출력 저하나 진동 등 다른 증상이 있는지에 따라 대응이 달라집니다. 특히 경고등이 점멸하거나 심한 이상 증상이 동반되면 안전한 장소에 정차하고 운행을 중단한 뒤 점검받으셔야 합니다. 경고등은 차가 보내는 이상 신호라고 생각하시면 돼요. 사람도 몸에 이상이 있어도 당장 아프지 않을 때가 있잖아요. 차도 지금 잘 달린다고 해서 문제가 없다고 볼 수는 없거든요. 다만 경고등 종류와 증상에 따라 급한 정도가 달라요. 특히 깜빡이거나 차가 심하게 떨리면 계속 운행하지 마시고 안전한 곳에 세운 뒤 연락 주시는 게 좋습니다. 고객을 겁주지 않으면서 위험 신호를 명확하게 설명하고 안전한 행동을 안내하기">
+<summary><span class="qid">Q22</span><span class="qtitle">엔진 경고등이 들어왔는데 차는 멀쩡해요. 그냥 타도 되죠?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">Q22 · 엔진 경고등</span></div>
+<input aria-label="전문·논리형 응대" class="mode-radio" id="formal-22" name="mode-22" type="radio" value="formal"/>
+<input aria-label="쉬운 설명형 응대" checked="" class="mode-radio" id="natural-22" name="mode-22" type="radio" value="natural"/>
+<div aria-label="Q22 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-22">전문·논리형</label><label class="mode" for="natural-22">쉬운 설명형</label></div>
+<div class="response-title">▤ 고객의 눈높이에서 쉽게 설명하는 응대</div>
+<p class="response formal-panel">엔진 경고등은 엔진이나 관련 제어 시스템에서 이상이 감지됐을 때 표시될 수 있습니다. 현재 주행에 큰 문제가 느껴지지 않더라도 이상이 없다고 판단할 수는 없습니다. 경고등이 점등된 상태인지 점멸하는지, 출력 저하나 진동 등 다른 증상이 있는지에 따라 대응이 달라집니다. 특히 경고등이 점멸하거나 심한 이상 증상이 동반되면 안전한 장소에 정차하고 운행을 중단한 뒤 점검받으셔야 합니다.</p><p class="response natural-panel">경고등은 차가 보내는 이상 신호라고 생각하시면 돼요. 사람도 몸에 이상이 있어도 당장 아프지 않을 때가 있잖아요. 차도 지금 잘 달린다고 해서 문제가 없다고 볼 수는 없거든요. 다만 경고등 종류와 증상에 따라 급한 정도가 달라요. 특히 깜빡이거나 차가 심하게 떨리면 계속 운행하지 마시고 안전한 곳에 세운 뒤 연락 주시는 게 좋습니다.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+<div class="coaching"><div class="coaching-title">♧   CS 코칭 포인트</div><p>고객을 겁주지 않으면서 위험 신호를 명확하게 설명하고 안전한 행동을 안내하기</p></div>
+</div></details><details class="faq" data-cat="5" data-search="부품 관리 · 차량 수리 타이어가 아직 멀쩡해 보이는데 왜 교체하라는 거예요? 타이어는 외관뿐 아니라 트레드 마모 깊이, 편마모, 균열, 손상 상태 등을 종합적으로 확인해야 합니다. 겉으로 큰 문제가 없어 보여도 마모가 진행되면 젖은 노면에서의 제동 성능 등에 영향을 줄 수 있습니다. 고객님 차량은 ○○ 부분에서 이상이 확인되어 현재 상태와 교체 필요성을 안내드리는 겁니다. 타이어는 운동화 밑창과 비슷하다고 생각하시면 돼요. 겉은 멀쩡해 보여도 바닥 무늬가 많이 닳으면 미끄러운 곳에서 잘 버티기 어렵잖아요. 타이어도 홈의 깊이나 한쪽만 닳은 상태 등을 확인해야 해요. 이 부분을 같이 보시면 교체를 권장드린 이유를 이해하시기 편하실 거예요. 육안으로 보이는 상태와 실제 안전 기준의 차이를 시각적으로 설명하기">
+<summary><span class="qid">Q23</span><span class="qtitle">타이어가 아직 멀쩡해 보이는데 왜 교체하라는 거예요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">Q23 · 타이어</span></div>
+<input aria-label="전문·논리형 응대" class="mode-radio" id="formal-23" name="mode-23" type="radio" value="formal"/>
+<input aria-label="쉬운 설명형 응대" checked="" class="mode-radio" id="natural-23" name="mode-23" type="radio" value="natural"/>
+<div aria-label="Q23 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-23">전문·논리형</label><label class="mode" for="natural-23">쉬운 설명형</label></div>
+<div class="response-title">▤ 고객의 눈높이에서 쉽게 설명하는 응대</div>
+<p class="response formal-panel">타이어는 외관뿐 아니라 트레드 마모 깊이, 편마모, 균열, 손상 상태 등을 종합적으로 확인해야 합니다. 겉으로 큰 문제가 없어 보여도 마모가 진행되면 젖은 노면에서의 제동 성능 등에 영향을 줄 수 있습니다. 고객님 차량은 ○○ 부분에서 이상이 확인되어 현재 상태와 교체 필요성을 안내드리는 겁니다.</p><p class="response natural-panel">타이어는 운동화 밑창과 비슷하다고 생각하시면 돼요. 겉은 멀쩡해 보여도 바닥 무늬가 많이 닳으면 미끄러운 곳에서 잘 버티기 어렵잖아요. 타이어도 홈의 깊이나 한쪽만 닳은 상태 등을 확인해야 해요. 이 부분을 같이 보시면 교체를 권장드린 이유를 이해하시기 편하실 거예요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+<div class="coaching"><div class="coaching-title">♧   CS 코칭 포인트</div><p>육안으로 보이는 상태와 실제 안전 기준의 차이를 시각적으로 설명하기</p></div>
+</div></details><details class="faq" data-cat="5" data-search="부품 관리 · 차량 수리 에어컨에서 냄새가 나는데 필터만 바꾸면 해결되는 거 아닌가요? 에어컨 냄새는 필터 오염뿐 아니라 공조 장치 내부의 습기나 오염 등 여러 원인으로 발생할 수 있습니다. 필터가 원인이라면 교체로 개선될 수 있지만, 다른 부분에서 냄새가 발생한다면 추가적인 조치가 필요할 수 있습니다. 우선 필터 상태와 냄새 발생 조건을 확인한 후 필요한 작업 범위를 안내드리겠습니다. 필터를 바꾸면 좋아지는 경우도 있어요. 그런데 에어컨 안쪽에 습기가 남아 있거나 오염된 부분이 있으면 필터만 바꿔도 냄새가 계속 날 수 있거든요. 집 에어컨도 필터는 깨끗한데 안쪽에서 냄새가 나는 경우가 있는 것처럼요. 먼저 어디에서 냄새가 발생하는지 확인해 보겠습니다. 고객의 예상 해결책을 부정하지 않고, 다른 가능성과 점검 필요성을 자연스럽게 설명하기">
+<summary><span class="qid">Q24</span><span class="qtitle">에어컨에서 냄새가 나는데 필터만 바꾸면 해결되는 거 아닌가요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">Q24 · 에어컨</span></div>
+<input aria-label="전문·논리형 응대" class="mode-radio" id="formal-24" name="mode-24" type="radio" value="formal"/>
+<input aria-label="쉬운 설명형 응대" checked="" class="mode-radio" id="natural-24" name="mode-24" type="radio" value="natural"/>
+<div aria-label="Q24 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-24">전문·논리형</label><label class="mode" for="natural-24">쉬운 설명형</label></div>
+<div class="response-title">▤ 고객의 눈높이에서 쉽게 설명하는 응대</div>
+<p class="response formal-panel">에어컨 냄새는 필터 오염뿐 아니라 공조 장치 내부의 습기나 오염 등 여러 원인으로 발생할 수 있습니다. 필터가 원인이라면 교체로 개선될 수 있지만, 다른 부분에서 냄새가 발생한다면 추가적인 조치가 필요할 수 있습니다. 우선 필터 상태와 냄새 발생 조건을 확인한 후 필요한 작업 범위를 안내드리겠습니다.</p><p class="response natural-panel">필터를 바꾸면 좋아지는 경우도 있어요. 그런데 에어컨 안쪽에 습기가 남아 있거나 오염된 부분이 있으면 필터만 바꿔도 냄새가 계속 날 수 있거든요. 집 에어컨도 필터는 깨끗한데 안쪽에서 냄새가 나는 경우가 있는 것처럼요. 먼저 어디에서 냄새가 발생하는지 확인해 보겠습니다.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+<div class="coaching"><div class="coaching-title">♧   CS 코칭 포인트</div><p>고객의 예상 해결책을 부정하지 않고, 다른 가능성과 점검 필요성을 자연스럽게 설명하기</p></div>
+</div></details><details class="faq" data-cat="5" data-search="부품 관리 · 차량 수리 차에서 이상한 소리가 났는데, 정비소에 오니까 안 나네요. 그럼 괜찮은 거죠? 차량 소음은 주행 속도, 노면 상태, 엔진 온도 등 특정 조건에서만 나타나는 경우가 있습니다. 현재 소음이 재현되지 않는다고 해서 이상이 없다고 단정하기는 어렵습니다. 소음이 발생했던 상황을 확인하고 관련 부위를 점검하겠습니다. 필요하면 동일한 조건에서 재현 여부를 확인하거나 추후 추가 점검을 안내드리겠습니다. 차 소리가 꼭 정비소에 오면 안 나는 경우가 있더라고요. 특정 속도로 달릴 때나 차가 차가운 상태일 때만 나는 소리도 있거든요. 언제, 어떤 상황에서 소리가 났는지 알려주시면 그 조건에 맞춰 확인해 볼게요. 혹시 녹음이나 영상이 있으시면 원인을 찾는 데 도움이 될 수 있습니다. 증상이 재현되지 않아도 고객의 경험을 존중하고 구체적인 확인 방법 제안하기">
+<summary><span class="qid">Q25</span><span class="qtitle">차에서 이상한 소리가 났는데, 정비소에 오니까 안 나네요. 그럼 괜찮은 거죠?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">Q25 · 소음</span></div>
+<input aria-label="전문·논리형 응대" class="mode-radio" id="formal-25" name="mode-25" type="radio" value="formal"/>
+<input aria-label="쉬운 설명형 응대" checked="" class="mode-radio" id="natural-25" name="mode-25" type="radio" value="natural"/>
+<div aria-label="Q25 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-25">전문·논리형</label><label class="mode" for="natural-25">쉬운 설명형</label></div>
+<div class="response-title">▤ 고객의 눈높이에서 쉽게 설명하는 응대</div>
+<p class="response formal-panel">차량 소음은 주행 속도, 노면 상태, 엔진 온도 등 특정 조건에서만 나타나는 경우가 있습니다. 현재 소음이 재현되지 않는다고 해서 이상이 없다고 단정하기는 어렵습니다. 소음이 발생했던 상황을 확인하고 관련 부위를 점검하겠습니다. 필요하면 동일한 조건에서 재현 여부를 확인하거나 추후 추가 점검을 안내드리겠습니다.</p><p class="response natural-panel">차 소리가 꼭 정비소에 오면 안 나는 경우가 있더라고요. 특정 속도로 달릴 때나 차가 차가운 상태일 때만 나는 소리도 있거든요. 언제, 어떤 상황에서 소리가 났는지 알려주시면 그 조건에 맞춰 확인해 볼게요. 혹시 녹음이나 영상이 있으시면 원인을 찾는 데 도움이 될 수 있습니다.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+<div class="coaching"><div class="coaching-title">♧   CS 코칭 포인트</div><p>증상이 재현되지 않아도 고객의 경험을 존중하고 구체적인 확인 방법 제안하기</p></div>
+</div></details><details class="faq" data-cat="5" data-search="부품 관리 · 차량 수리 컴퓨터로 검사하면 바로 알 수 있는 거 아닌가요? 왜 점검 시간이 오래 걸려요? 진단 장비는 차량의 제어 시스템에 기록된 오류 코드나 작동 정보를 확인하는 데 도움을 줍니다. 하지만 오류 코드가 항상 특정 부품의 고장을 확정하는 것은 아닙니다. 정확한 원인을 파악하려면 관련 부품의 작동 상태나 배선, 연결 부위 등을 추가로 확인해야 할 수 있어 점검 시간이 필요한 겁니다. 컴퓨터가 문제의 단서를 알려주는 건 맞아요. 다만 정확히 어느 부품이 문제인지까지 항상 알려주는 건 아니거든요. 병원에서 검사 결과를 보고 의사가 다른 검사나 증상까지 확인해서 판단하는 것과 비슷해요. 자동차도 오류가 뜬 이유를 찾아야 정확하게 수리할 수 있어서 추가 점검이 필요한 겁니다. 진단 장비의 역할과 정비사의 전문적인 판단이 필요한 이유를 함께 설명하기">
+<summary><span class="qid">Q26</span><span class="qtitle">컴퓨터로 검사하면 바로 알 수 있는 거 아닌가요? 왜 점검 시간이 오래 걸려요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">Q26 · 진단 장비</span></div>
+<input aria-label="전문·논리형 응대" class="mode-radio" id="formal-26" name="mode-26" type="radio" value="formal"/>
+<input aria-label="쉬운 설명형 응대" checked="" class="mode-radio" id="natural-26" name="mode-26" type="radio" value="natural"/>
+<div aria-label="Q26 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-26">전문·논리형</label><label class="mode" for="natural-26">쉬운 설명형</label></div>
+<div class="response-title">▤ 고객의 눈높이에서 쉽게 설명하는 응대</div>
+<p class="response formal-panel">진단 장비는 차량의 제어 시스템에 기록된 오류 코드나 작동 정보를 확인하는 데 도움을 줍니다. 하지만 오류 코드가 항상 특정 부품의 고장을 확정하는 것은 아닙니다. 정확한 원인을 파악하려면 관련 부품의 작동 상태나 배선, 연결 부위 등을 추가로 확인해야 할 수 있어 점검 시간이 필요한 겁니다.</p><p class="response natural-panel">컴퓨터가 문제의 단서를 알려주는 건 맞아요. 다만 정확히 어느 부품이 문제인지까지 항상 알려주는 건 아니거든요. 병원에서 검사 결과를 보고 의사가 다른 검사나 증상까지 확인해서 판단하는 것과 비슷해요. 자동차도 오류가 뜬 이유를 찾아야 정확하게 수리할 수 있어서 추가 점검이 필요한 겁니다.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+<div class="coaching"><div class="coaching-title">♧   CS 코칭 포인트</div><p>진단 장비의 역할과 정비사의 전문적인 판단이 필요한 이유를 함께 설명하기</p></div>
+</div></details><details class="faq" data-cat="5" data-search="부품 관리 · 차량 수리 차 산 지 얼마 안 됐는데 왜 무상수리가 안 된다는 거예요? 고객님, 차량 구매 후 얼마 지나지 않아 수리 비용이 발생한다면 의문이 드실 수 있습니다. 보증수리는 차량의 보증기간과 주행거리뿐 아니라 해당 부품과 고장 원인이 보증 대상에 해당하는지도 확인해야 합니다. 먼저 고객님 차량의 보증 조건과 점검 결과를 확인하고, 이번 수리가 보증 적용 대상인지, 적용이 어렵다면 어떤 사유 때문인지 구체적으로 안내드리겠습니다. 새 차를 구매하신 지 얼마 안 됐으니까 당연히 무상으로 되는 거 아닌가 싶으실 수 있어요. 그런데 자동차 보증은 모든 부품과 모든 상황에 똑같이 적용되는 건 아니거든요. 부품 종류와 고장 원인에 따라 적용 여부가 달라질 수 있습니다. 이번에는 어떤 조건 때문에 비용이 발생하는지 하나씩 확인해서 설명드릴게요. 고객의 무상수리 기대를 인정하고, 실제 보증 조건과 판단 근거를 투명하게 설명하기">
+<summary><span class="qid">Q27</span><span class="qtitle">차 산 지 얼마 안 됐는데 왜 무상수리가 안 된다는 거예요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">Q27 · 보증수리</span></div>
+<input aria-label="전문·논리형 응대" class="mode-radio" id="formal-27" name="mode-27" type="radio" value="formal"/>
+<input aria-label="쉬운 설명형 응대" checked="" class="mode-radio" id="natural-27" name="mode-27" type="radio" value="natural"/>
+<div aria-label="Q27 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-27">전문·논리형</label><label class="mode" for="natural-27">쉬운 설명형</label></div>
+<div class="response-title">▤ 고객의 눈높이에서 쉽게 설명하는 응대</div>
+<p class="response formal-panel">고객님, 차량 구매 후 얼마 지나지 않아 수리 비용이 발생한다면 의문이 드실 수 있습니다. 보증수리는 차량의 보증기간과 주행거리뿐 아니라 해당 부품과 고장 원인이 보증 대상에 해당하는지도 확인해야 합니다. 먼저 고객님 차량의 보증 조건과 점검 결과를 확인하고, 이번 수리가 보증 적용 대상인지, 적용이 어렵다면 어떤 사유 때문인지 구체적으로 안내드리겠습니다.</p><p class="response natural-panel">새 차를 구매하신 지 얼마 안 됐으니까 당연히 무상으로 되는 거 아닌가 싶으실 수 있어요. 그런데 자동차 보증은 모든 부품과 모든 상황에 똑같이 적용되는 건 아니거든요. 부품 종류와 고장 원인에 따라 적용 여부가 달라질 수 있습니다. 이번에는 어떤 조건 때문에 비용이 발생하는지 하나씩 확인해서 설명드릴게요.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+<div class="coaching"><div class="coaching-title">♧   CS 코칭 포인트</div><p>고객의 무상수리 기대를 인정하고, 실제 보증 조건과 판단 근거를 투명하게 설명하기</p></div>
+</div></details><details class="faq" data-cat="5" data-search="부품 관리 · 차량 수리 기름이 조금 새는 것 같은데, 당장 수리 안 하면 큰일 나나요? 차량에서 액체가 새는 경우에는 먼저 어떤 종류의 액체인지, 어느 부위에서 얼마나 누출되는지 확인하는 것이 중요합니다. 엔진오일이나 냉각수 등은 누출 정도에 따라 차량 손상이나 안전 문제로 이어질 수 있습니다. 단순한 에어컨 응축수처럼 정상적인 현상일 가능성도 있으므로 점검을 통해 구분해야 합니다. 누출이 심하거나 경고등, 과열 등 이상이 동반된다면 운행을 중단하고 점검받으셔야 합니다. 차 밑에 액체가 떨어졌다고 해서 전부 고장은 아니에요. 에어컨을 켜면 물이 떨어지는 건 정상일 수 있거든요. 그런데 엔진오일이나 냉각수가 새는 거라면 이야기가 달라집니다. 어디에서 무엇이 새는지부터 확인해야 해요. 특히 많이 새거나 경고등까지 켜졌다면 계속 운행하지 않으시는 게 좋습니다. 불확실한 상황에서 성급히 단정하지 않고, 위험 수준과 필요한 조치를 구분해 안내하기">
+<summary><span class="qid">Q28</span><span class="qtitle">기름이 조금 새는 것 같은데, 당장 수리 안 하면 큰일 나나요?</span><span aria-hidden="true" class="chevron"></span></summary>
+<div class="answer"><div class="answer-head"><strong>추천 응대 멘트</strong><span class="chip">Q28 · 누유</span></div>
+<input aria-label="전문·논리형 응대" class="mode-radio" id="formal-28" name="mode-28" type="radio" value="formal"/>
+<input aria-label="쉬운 설명형 응대" checked="" class="mode-radio" id="natural-28" name="mode-28" type="radio" value="natural"/>
+<div aria-label="Q28 응대 유형 선택" class="switch" role="group"><label class="mode" for="formal-28">전문·논리형</label><label class="mode" for="natural-28">쉬운 설명형</label></div>
+<div class="response-title">▤ 고객의 눈높이에서 쉽게 설명하는 응대</div>
+<p class="response formal-panel">차량에서 액체가 새는 경우에는 먼저 어떤 종류의 액체인지, 어느 부위에서 얼마나 누출되는지 확인하는 것이 중요합니다. 엔진오일이나 냉각수 등은 누출 정도에 따라 차량 손상이나 안전 문제로 이어질 수 있습니다. 단순한 에어컨 응축수처럼 정상적인 현상일 가능성도 있으므로 점검을 통해 구분해야 합니다. 누출이 심하거나 경고등, 과열 등 이상이 동반된다면 운행을 중단하고 점검받으셔야 합니다.</p><p class="response natural-panel">차 밑에 액체가 떨어졌다고 해서 전부 고장은 아니에요. 에어컨을 켜면 물이 떨어지는 건 정상일 수 있거든요. 그런데 엔진오일이나 냉각수가 새는 거라면 이야기가 달라집니다. 어디에서 무엇이 새는지부터 확인해야 해요. 특히 많이 새거나 경고등까지 켜졌다면 계속 운행하지 않으시는 게 좋습니다.</p>
+<div class="copyrow"><button class="copy" type="button">▢   멘트 복사</button></div>
+<div class="coaching"><div class="coaching-title">♧   CS 코칭 포인트</div><p>불확실한 상황에서 성급히 단정하지 않고, 위험 수준과 필요한 조치를 구분해 안내하기</p></div>
+</div></details></section><p class="empty" hidden="" id="empty">검색 결과가 없습니다. 다른 키워드로 검색해 보세요.</p><div class="actions"><button class="textbtn" id="openall" type="button">모두 펼치기</button><button class="textbtn" id="closeall" type="button">모두 접기</button></div></div>
+<p class="disclaimer">안내 · 이 페이지는 르노코리아 공식 매뉴얼이 아닌 CS 교육 제안용 시제품입니다. 실제 적용 전 고객사 검수 및 승인 절차가 필요합니다. 차량 진단, 수리 필요성, 비용, 보증 및 안전 관련 판단은 담당자의 점검 결과와 공식 절차를 우선합니다. 고객 개인정보·차량번호 등을 이 가이드에 입력하지 마세요.</p><p class="footer">인터넷 연결 없이도 질문과 답변 열람 가능 · 검색 및 복사는 브라우저에서 지원</p></main>
+<script>
+(()=>{
+const names=["수리비 · 견적", "점검 · 진단", "대기 · 일정", "수리 후 · 재방문", "불만 · 감정 응대", "부품 관리 · 차량 수리"], all=[...document.querySelectorAll('.faq')], cats=[...document.querySelectorAll('.category')], search=document.getElementById('search'), section=document.getElementById('sectiontitle'), count=document.getElementById('count'), empty=document.getElementById('empty');let chosen=0;
+function render(){const term=search.value.trim().toLocaleLowerCase();let visible=0;all.forEach(card=>{const show=term?card.dataset.search.includes(term):+card.dataset.cat===chosen;card.hidden=!show;if(show)visible++;});section.textContent=term?'검색 결과':String(chosen+1).padStart(2,'0')+'. '+names[chosen];count.textContent=visible+'개 질문';empty.hidden=visible!==0;cats.forEach(btn=>{const active=+btn.dataset.cat===chosen&&!term;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',String(active));});}
+cats.forEach(btn=>btn.addEventListener('click',()=>{chosen=+btn.dataset.cat;search.value='';all.forEach(el=>el.open=false);render();}));search.addEventListener('input',render);
+all.forEach(card=>{card.querySelector('.copy').addEventListener('click',async e=>{
+const selected=card.querySelector('.mode-radio:checked')?.value || 'natural';
+const msg=card.querySelector(selected==='formal'?'.formal-panel':'.natural-panel').textContent;
+try{if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(msg);else{const ta=document.createElement('textarea');ta.value=msg;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();if(!document.execCommand('copy'))throw Error('copy failed');ta.remove();}
+const b=e.currentTarget;b.textContent='✓ 복사했어요';setTimeout(()=>b.textContent='▢   멘트 복사',1700);
+}catch(err){alert('복사 기능을 사용할 수 없습니다. 문장을 길게 눌러 복사해 주세요.');}
+});});
+document.getElementById('openall').addEventListener('click',()=>all.filter(x=>!x.hidden).forEach(x=>x.open=true));document.getElementById('closeall').addEventListener('click',()=>all.forEach(x=>x.open=false));render();
+})();
+</script></body></html>
